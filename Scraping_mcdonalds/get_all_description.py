@@ -18,7 +18,7 @@ def scrape():
     all_data = []
 
     # Цикли для обробки перших
-    for url in all_url[:2]:
+    for url in all_url[:5]:
         print(f"Processing: {url}")
         driver.get(url)
         time.sleep(4)  # Можна замінити на WebDriverWait, але тут чекаємо 4 секунди
@@ -30,10 +30,9 @@ def scrape():
         try:
             # Витягнення даних з HTML
             name = soup.find('span', {'class': 'cmp-product-details-main__heading-title'}).get_text()
-            description = soup.find('span', {'class': 'body'}).get_text()
+            description = soup.find('div', {'class': 'cmp-product-details-main__description'}).get_text()
             calories = soup.find('div', {'class': 'cmp-product-details-main__sub-heading'}).get_text()
-
-            print(name)
+            
             # Знаходимо кнопку і клікаємо
             button = driver.find_element(By.CLASS_NAME, 'cmp-accordion__button')
             button.click()
@@ -71,7 +70,7 @@ def scrape():
             all_data.append(data)
 
             # Очікування після кліку
-            time.sleep(3)
+            time.sleep(4)
 
         except Exception as e:
             print(f"Error processing {url}: {e}")
