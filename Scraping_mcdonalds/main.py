@@ -14,25 +14,6 @@ class SpanScraper:
         driver = webdriver.Chrome()
         driver.get(self.url)
         time.sleep(4)
-
-        # # Плавна прокрутка сторінки до самого низу
-        # scroll_pause_time = 0.2   # Час затримки між прокрутками (можна налаштувати)
-        # scroll_height_step = 1000  # Кількість пікселів для прокрутки за один крок
-        #
-        # last_height = driver.execute_script("return document.body.scrollHeight")
-        #
-        # while True:
-        #     # Прокручуємо сторінку вниз на невеликий крок
-        #     driver.execute_script(f"window.scrollBy(0, {scroll_height_step});")
-        #     time.sleep(scroll_pause_time)
-        #
-        #     # Оновлюємо висоту сторінки після прокрутки
-        #     new_height = driver.execute_script("return document.body.scrollHeight")
-        #     if new_height == last_height:
-        #         break
-        #     last_height = new_height
-
-        # Отримати HTML-код сторінки
         html_code = driver.page_source
         soup = BeautifulSoup(html_code, 'html.parser')
 
