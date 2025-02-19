@@ -23,7 +23,6 @@ def load_products():
         return json.load(file)
 
 # Отримання всіх продуктів
-
 @app.get("/all_products/", response_model=List[Product])
 async def get_all_products():
     # Зчитуємо продукти з файлу

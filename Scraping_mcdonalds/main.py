@@ -7,6 +7,8 @@ url = 'https://www.mcdonalds.com/ua/uk-ua/eat/fullmenu.html'
 res = []
 
 class SpanScraper:
+    """Цей клас робить основний запит на сайт з меню мака і витягує всі силки на смаколики і зберігає в файлі,
+                з якого ми потім діствєм весь опис"""
     def __init__(self, url):
         self.url = url
 
@@ -17,7 +19,7 @@ class SpanScraper:
         html_code = driver.page_source
         soup = BeautifulSoup(html_code, 'html.parser')
 
-        # Знайти всі теги 'a' з класом 'result-item-heading' і пропустити перші 20 в посиланні
+        # Знайти всі теги 'a' на смаколики
         span_elements = soup.find_all('a', {'class': 'cmp-category__item-link'})
         spans_href = [span.get('href') for span in span_elements]
         for i in spans_href:
@@ -26,7 +28,7 @@ class SpanScraper:
         print(res)
         driver.quit()
 
-        # Запис в файл всіх посилань на менб мака
+        # Запис в файл всіх посилань на меню мака
         # with open('links.json', 'w') as f:
         #     json.dump(res, f)
         return spans_href
