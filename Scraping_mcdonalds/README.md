@@ -15,3 +15,6 @@
 Змінити дані скільки циклів скрапінгу здійснити в [get_all_description.py].
 
 Також тут міститься всі посилання з меню макдональса [links.json] по яких ми в [get_all_description.py] витягуємо дані.
+
+Запуск FastAPI відкривши у своїй деректорії файл [send_fast_api.py] або командою uvicorn send_fast_api:app --reload 
+Але перевірте чи у вас встановлено >>>>> uvicorn  або всі requirements) =)
